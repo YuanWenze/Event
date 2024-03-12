@@ -1,84 +1,22 @@
-    import java.time.LocalDate;
-    import java.util.Scanner;
-    public class Main{
-    public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+import java.util.Scanner;
 
-        System.out.print("Enter event ID: ");
-        String eventID = scanner.nextLine();
-
-        System.out.print("Enter event name: ");
-        String eventName = scanner.nextLine();
-
-        System.out.print("Enter event venue: ");
-        String eventVenue = scanner.nextLine();
-
-        System.out.print("Enter event date (yyyy-MM-dd): ");
-        String eventDateString = scanner.nextLine();
-        LocalDate eventDate = LocalDate.parse(eventDateString);
-
-        Event event = new Event(eventID, eventName, eventVenue, eventDate);
-    //Add
-        System.out.println("enter the names of the attendees (enter 'done' to finish):");
-        String input;
-        while (!(input = scanner.nextLine()).equalsIgnoreCase("done")) 
-        {
-            event.addAttendee(input);
-        }
-    // Display event details
-        System.out.println(event);
-    // Perform operations
-        System.out.println("Available operations: add, remove, update, find, total");
-        System.out.print("Enter an operation: ");
-        String operation = scanner.nextLine();
-
-        switch (operation) {
-            case "remove":
-                System.out.print("Enter the name of the attendee to remove: ");
-                String attendeeToRemove = scanner.nextLine();
-                event.removeAttendee(attendeeToRemove);
-                System.out.println("Attendee removed successfully!");
-                break;
-            case "add":
-                System.out.print("Enter the name of the attendee to add: ");
-                String newAttendee = scanner.nextLine();
-                event.addAttendee(newAttendee);
-                System.out.println("Attendee added successfully!");
-                break;
-            case "update":
-                System.out.print("Enter the old name of the attendee: ");
-                String oldAttendee = scanner.nextLine();
-                System.out.print("Enter the new name of the attendee: ");
-                String newAttendeeName = scanner.nextLine();
-                event.updateAttendee(oldAttendee, newAttendeeName);
-                System.out.println("Attendee updated successfully!");
-                break;
-            case "find":
-                System.out.print("Enter the name of the attendee to find: ");
-                String attendeeToFind = scanner.nextLine();
-                String foundAttendee = event.findAttendee(attendeeToFind);
-                if (foundAttendee != null) {
-                    System.out.println("Attendee found: " + foundAttendee);
-                } else {
-                    System.out.println("Attendee not found!");
-                }
-                break;
-            case "total":
-                System.out.println("Total number of attendees: " + event.getTotalAttendees());
-                break;
-            default:
-                System.out.println("Invalid operation!");
-        }
-
-        // Display event details again
-        System.out.println(event);
-
-        scanner.close();
+public class Main{
+    public static void main(String[] args) throws Exception {
+    Scanner reader = new Scanner(System.in);
+        Event event = new Event();
+        int choice = 0;
+        do{
+        
+        System.out.println("\n" + "Here's what you can do in the program" + "\n");
+        System.out.println("Type 1 to enter event details:" + "\n");
+        System.out.println("Type 2 to enter attendee names that are coming to the event:" + "\n");
+        System.out.println("Type 3 to remove an attendee from the list:" + "\n");
+        System.out.println("Type 4 to update an attendee in the list:" + "\n");
+        System.out.println("Type 5 to search for an attebdee in the list:" + "\n");
+        System.out.println("Type 6 to display all the attendees from the event:" + "\n");
+        choice = reader.nextInt();
+        event.organizeEvent(choice);
+        }while(choice != 7);
+        reader.close();
     }
-
-
-
-
-
-
 }
