@@ -82,7 +82,7 @@ public void organizeEvent(int choice){
     String nameToRemove = reader.nextLine();
     for(Attendee attendee : eventAttendees){
 
-        if(nameToRemove.equals(attendee.getName())){
+    if(nameToRemove.equals(attendee.getName())){
             eventAttendees.remove(attendee);
             break; 
         }
@@ -109,7 +109,7 @@ System.out.println("Enter the new gender,or enter null if you don't want to upda
            if(!newGender.equals("null")){
            attendee.setGender(newGender.charAt(0));
                }
-System.out.println("Enter the new age, or enter 0 if you don't want to update :");          
+System.out.println("Enter the new age, or enter null if you don't want to update :");          
 int newAge = reader.nextInt();             
 reader.nextLine();
 reader.nextLine();
